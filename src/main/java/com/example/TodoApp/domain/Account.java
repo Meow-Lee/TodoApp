@@ -3,7 +3,7 @@ package com.example.TodoApp.domain;
 import jakarta.persistence.*;
 
 @Entity
-public class User {
+public class Account {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "UserId")
