@@ -12,10 +12,16 @@ import java.util.Optional;
 
 @Controller
 public class LoginController {
-//    private final AccountService accountService = new AccountService();
+    //    private final AccountService accountService = new AccountService();
     @GetMapping("/login")
     public String login() {
         return "login";
+    }
+
+    @PostMapping("/logout")
+    public String logout() {
+
+        return "redirect:/login";
     }
 
 //    @PostMapping("/login")
