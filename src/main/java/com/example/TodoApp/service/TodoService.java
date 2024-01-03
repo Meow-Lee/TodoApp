@@ -1,12 +1,12 @@
 package com.example.TodoApp.service;
 
+import com.example.TodoApp.aop.TimeLog;
 import com.example.TodoApp.domain.Todo;
 import com.example.TodoApp.repository.TodoRepository;
 import com.example.TodoApp.vo.TodoVO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.ModelAttribute;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -39,6 +39,7 @@ public class TodoService {
     /**
      * todo add
      */
+    @TimeLog
     public void addTodo(TodoVO todoVO) {
         String title = todoVO.getTitle();
         String desc = todoVO.getDesc();
