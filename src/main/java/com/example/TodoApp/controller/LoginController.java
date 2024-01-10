@@ -2,6 +2,7 @@ package com.example.TodoApp.controller;
 
 import com.example.TodoApp.service.LoginService;
 import com.example.TodoApp.vo.LoginVO;
+import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
