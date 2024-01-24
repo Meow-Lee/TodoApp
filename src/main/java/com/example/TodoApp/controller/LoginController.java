@@ -13,6 +13,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 @RequiredArgsConstructor
 public class LoginController {
     private final LoginService loginService;
+
+    @GetMapping("/")
+    public String beforeLogin() {
+        return "home";
+    }
+
     @GetMapping("/login")
     public String login() {
         return "login";

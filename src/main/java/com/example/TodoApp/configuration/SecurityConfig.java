@@ -10,7 +10,7 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableWebSecurity
 public class SecurityConfig {
     /**
-     * request 들어오는 것에 대해서 /login으로 매칭되는 url들은 요청을 받아들이고, 다른 요청들은 인가가 필요하도록 함
+     * /home 으로 들어오는 요청은 모두 허용
      * 폼 로그인 페이지는 /login으로 설저앟고 성공하면 이동하는 url은 /home으로 이동하게 함
      */
     @Bean
