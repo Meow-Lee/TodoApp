@@ -20,8 +20,6 @@ import java.time.LocalDate;
  */
 
 @Entity
-@Data
-@RequiredArgsConstructor
 public class Todo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
