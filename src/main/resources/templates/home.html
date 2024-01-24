@@ -4,14 +4,92 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Todo App</title>
-    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        .todo-form {
+            display: flex;
+            flex-wrap: wrap; /* div 간격 조절 */
+            margin-bottom: 20px;
+        }
+        .todo-form div {
+            margin-bottom: 15px; /* 각 div 사이의 간격 조절 */
+            width: 100%;
+        }
+        input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #4caf50;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        li {
+            padding: 15px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 12px;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+        .todo-detail {
+            margin-bottom: 20px;
+        }
+        .todo-actions {
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
 <div class="container">
     <h1>Todo App</h1>
 
     <!-- Todo Form -->
-    <form id="todoForm" th:action="@{/add}" th:object="${newTodo}" method="post">
+    <form id="todoForm" th:action="@{/add}" th:object="${newTodo}" method="post" class="todo-form">
         <div>
             <label for="todoTitle">Add a new title:</label>
             <input type="text" id="todoTitle" th:field="*{title}" placeholder="Enter your todo" required>
@@ -26,7 +104,7 @@
         </div>
         <div>
             <label for="todoCategory">Add a new Category:</label>
-            <input type="text" id="todoCategory" th:field="*{category}" placeholder="Classficate your Todo" required>
+            <input type="text" id="todoCategory" th:field="*{category}" placeholder="Classify your Todo" required>
         </div>
         <div>
             <label for="todoCompleted">Completed?</label>
@@ -39,6 +117,12 @@
 
 <div class="container">
     <h1>Todo List</h1>
+    <!-- Todo 추가 버튼 -->
+    <div class="todo-actions">
+        <a th:href="@{/add-todo}">
+            <button type="button">Add Todo</button>
+        </a>
+    </div>
     <!-- Todo List -->
     <table>
         <thead>
@@ -47,8 +131,8 @@
             <th>할 일</th>
             <th>내용</th>
             <th>기한</th>
-            <th>완료 여부</th>
             <th>카테고리</th>
+            <th>완료 여부</th>
             <th class="action-detail">글 상세</th>
             <th class="action-update">글 수정</th>
             <th class="action-delete">글 삭제</th>
@@ -61,7 +145,9 @@
             <td th:text="${todo.desc}"></td>
             <td th:text="${#temporals.format(todo.dueDate, 'yyyy-MM-dd')}"></td>
             <td th:text="${todo.category}"></td>
-            <td th:text="${todo.completed}"></td>
+            <td>
+                <input type="checkbox" th:checked="${todo.completed}" disabled/>
+            </td>
             <td class="action-detail">
                 <a th:href="@{/detail/{id}(id=${todo.id})}">
                     <button>Detail</button>
