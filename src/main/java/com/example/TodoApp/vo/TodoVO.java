@@ -1,5 +1,6 @@
 package com.example.TodoApp.vo;
 
+import jakarta.persistence.Enumerated;
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -17,5 +18,8 @@ public class TodoVO {
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate dueDate;
+
+    @Enumerated
+    private String Category;
     private boolean completed;
 }
