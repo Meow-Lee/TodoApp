@@ -1,12 +1,10 @@
 package com.example.TodoApp.repository;
 
-import com.example.TodoApp.domain.Account;
+import com.example.TodoApp.domain.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.Optional;
-
 @Repository
-public interface AccountRepository extends JpaRepository<Account, Long> {
+public interface UserRepository extends JpaRepository<User, Long> {
 //    Optional<Account> findByName();
 }
